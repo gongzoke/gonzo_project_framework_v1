@@ -1,0 +1,11 @@
+.button-row{
+    /*居中*/
+    text-align: center;
+}
+
+.searchButton{
+    /*设置宽带*/
+    width: 100px;
+    /*设置字体颜色*/
+    color:blue;
+}

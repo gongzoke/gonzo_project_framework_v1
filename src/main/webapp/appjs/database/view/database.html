@@ -3,40 +3,24 @@
         <meta charset="UTF-8">
         <!--引用百度CDN-->
         <script src="https://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+        <!--引用自定义controller-->
         <script src="../controller/databaseController.js"></script>
-
-        <title>database</title>
+        <!--引用css样式(需要注意根目录引用路径)-->
+        <link rel="stylesheet" type="text/css" href="../css/database.css">
+        <title>搭建数据库框架</title>
     </head>
 
     <body ng-app="database" ng-controller="databaseController">
+        <div class="button-row">
+            <button class ="searchButton" ng-click="intiSearch()">搜索</button>
+        </div>
 
-    <h2>资料输入</h2>
 
 
-    <textarea ng-model="message" cols="40" rows="10"></textarea>
 
-    <p>
-        <button ng-click="save()">保存</button>
-        <button ng-click="clear()">清除</button>
-    </p>
-
-    <p>剩余字数: <span ng-bind="left()"></span></p>
-
-<!--    <script>-->
-<!--        var app = angular.module("database", []);-->
-<!--        app.controller("databaseController", function($scope) {-->
-<!--            $scope.message = "";-->
-<!--            $scope.left  = function() {return 100 - $scope.message.length;};-->
-<!--            $scope.clear = function() {$scope.message = "";};-->
-<!--            $scope.save  = function() {alert("Note Saved");};-->
-<!--        });-->
-<!--    </script>-->
 
     </body>
 </html>
-
-
-
 
 
 

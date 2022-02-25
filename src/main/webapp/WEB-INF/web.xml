@@ -7,12 +7,36 @@
 
   <!--IDEA中可以在project structure中自动配置applicationContext.xml以及dispatcher-servlet.xml文件-->
   <context-param>
-  <param-name>contextConfigLocation</param-name>
-  <param-value>WEB-INF/resources/applicationContext*.xml</param-value>
+    <param-name>contextConfigLocation</param-name>
+    <!--设置applicationContext.xml的路径-->
+    <param-value>/WEB-INF/resources/applicationContext.xml</param-value>
   </context-param>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
 
-  <!--更改默认index.jsp访问路径-->
-  <welcome-file-list>
-    <welcome-file>appjs/database/view/database.html</welcome-file>
-  </welcome-file-list>
+  <!--配置springmvc DispatcherServlet-->
+  <servlet>
+    <servlet-name>springMVC</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <!--配置dispatcher.xml作为mvc的配置文件-->
+      <param-name>contextConfigLocation</param-name>
+      <!--DispatcherServlet.xml的路径-->
+      <param-value>/WEB-INF/resources/dispatcher-servlet.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <!--如果url请求用的是*.do或其他格式,即以*.do或其他格式的url请求都会交到中央控制器DispatcherServlet处理-->
+  <servlet-mapping>
+    <servlet-name>springMVC</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+
+  <!--更改默认index.jsp访问路径. 更改后,根路径也会发生变化-->
+  <!--<welcome-file-list>-->
+    <!--welcome-file>appjs/database/view/database.html</welcome-file>-->
+  <!--/welcome-file-list>-->
+
 </web-app>
