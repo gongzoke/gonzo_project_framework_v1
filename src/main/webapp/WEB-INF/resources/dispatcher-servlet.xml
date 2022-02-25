@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--此文件负责整个mvc中的配置-->
+
+    <!--启用spring的一些annotation-->
+    <context:annotation-config/>
+
+    <!--配置注解驱动 可以将request参数与绑定到controller参数上-->
+    <mvc:annotation-driven/>
+
+    <!--静态资源映射-->
+    <!--<mvc:resources mapping="/css/**" location="/css/"/>-->
+    <mvc:resources mapping="/js/**" location="/appjs/"/>
+    <!--<mvc:resources mapping="/image/**" location="/images/"/>-->
+    <mvc:default-servlet-handler />  <!--这句要加上，要不然可能会访问不到静态资源，具体作用自行百度-->
+
+    <!--配置视图解析器：把handler处理类的返回值，加工成最终的视图路径-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/appjs/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+    <!--接收到中央控制器转过来的url命令后,就会到com.gonzo.tools这个包下面去扫描所有的注解-->
+    <context:component-scan base-package="com.gonzo.framework"/>
+
+</beans>
